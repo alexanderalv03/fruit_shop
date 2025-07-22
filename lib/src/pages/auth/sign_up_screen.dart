@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_shop/src/auth/components/custom_test_field.dart';
+import 'package:fruit_shop/src/pages/auth/components/custom_test_field.dart';
 import 'package:fruit_shop/src/config/custom_colors.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
 
-  final cpfFormater = MaskTextInputFormater();
+  final cpfFormater = MaskTextInputFormatter(
+    mask: '###.###.###-##',
+    filter: {'#': RegExp(r'[0-9]')},
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -75,10 +79,7 @@ class SignUpScreen extends StatelessWidget {
                           icon: Icons.phone,
                           label: 'Number',
                         ),
-                        const CustomTextField(
-                          icon: Icons.file_copy,
-                          label: 'CPF',
-                        ),
+                        CustomTextField(icon: Icons.file_copy, label: 'CPF'),
                         SizedBox(
                           height: 50,
                           child: ElevatedButton(
