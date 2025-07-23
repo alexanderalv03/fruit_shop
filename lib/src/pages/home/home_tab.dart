@@ -4,6 +4,7 @@ import 'package:fruit_shop/src/config/custom_colors.dart';
 import 'package:badges/badges.dart' as packageBadge;
 import 'package:fruit_shop/src/pages/home/components/category_tile.dart';
 import 'package:fruit_shop/src/config/app_data.dart' as appData;
+import 'package:fruit_shop/src/pages/home/components/item_tile.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -110,7 +111,7 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
 
-          // TODO: GRID
+          //GRID
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -119,10 +120,11 @@ class _HomeTabState extends State<HomeTab> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
+                childAspectRatio: 9 / 11.5,
               ),
               itemCount: appData.items.length,
               itemBuilder: (_, index) {
-                return Container(color: Colors.red);
+                return ItemTile(item: appData.items[index]);
               },
             ),
           ),
